@@ -51,11 +51,6 @@
     
 }
 
--(void)publishService
-{
-    
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -90,6 +85,7 @@
             didFindDomain:(NSString *)domainString
                moreComing:(BOOL)moreComing
 {
+    NSLog(@"find domain %@",domainString);
     [_domains addObject:domainString];
     if(!moreComing)
     {

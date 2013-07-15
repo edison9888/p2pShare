@@ -63,20 +63,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		}
 		
 		HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
-		
-		// Result will be of the form "answer=..."
-		
-		int answer = [[postStr substringFromIndex:7] intValue];
-		
-		NSData *response = nil;
-		if(answer == 10)
-		{
-			response = [@"<html><body>Correct<body></html>" dataUsingEncoding:NSUTF8StringEncoding];
-		}
-		else
-		{
-			response = [@"<html><body>Sorry - Try Again<body></html>" dataUsingEncoding:NSUTF8StringEncoding];
-		}
+        
+        NSDictionary *responseDic=[NSDictionary dictionaryWithObjectsAndKeys:@"name",@"haha",@"sex",@"female", nil];
+		NSData *response = [NSJSONSerialization dataWithJSONObject:responseDic options:NSJSONWritingPrettyPrinted error:nil];
 		
 		return [[HTTPDataResponse alloc] initWithData:response];
 	}

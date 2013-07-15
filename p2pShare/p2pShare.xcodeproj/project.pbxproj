@@ -220,11 +220,11 @@
 			children = (
 				16C2C68C178F8F0000D3A4D6 /* AppDelegate.h */,
 				16C2C68D178F8F0000D3A4D6 /* AppDelegate.m */,
-				16C2C695178F8F0000D3A4D6 /* p2pShare.xcdatamodeld */,
-				16C2C684178F8EFF00D3A4D6 /* Supporting Files */,
 				16C2C6A7178F9BEC00D3A4D6 /* ChooseViewController.h */,
 				16C2C6A8178F9BEC00D3A4D6 /* ChooseViewController.m */,
 				16C2C6A9178F9BEC00D3A4D6 /* ChooseViewController.xib */,
+				16C2C695178F8F0000D3A4D6 /* p2pShare.xcdatamodeld */,
+				16C2C684178F8EFF00D3A4D6 /* Supporting Files */,
 			);
 			path = p2pShare;
 			sourceTree = "<group>";

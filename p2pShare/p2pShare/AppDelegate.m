@@ -10,7 +10,7 @@
 #import "HTTPServer.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
-
+#import "MyHTTPConnection.h"
 
 #import "LocalNetworkViewController.h"
 #import "ChooseViewController.h"
@@ -27,6 +27,8 @@
 	
 	// Create server using our custom MyHTTPServer class
 	httpServer = [[HTTPServer alloc] init];
+    [httpServer setType:@"_http._tcp."];
+    [httpServer setConnectionClass:[MyHTTPConnection class]];
     [self startServer];
     
     
