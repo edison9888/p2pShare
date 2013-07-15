@@ -1827,7 +1827,7 @@ static NSMutableArray *recentNonces;
 **/
 - (void)handleUnknownMethod:(NSString *)method
 {
-	// Override me for custom error handling of 405 method not allowed responses.
+	// Override me for custom error handling of 405 responses.
 	// If you simply want to add a few extra header fields, see the preprocessErrorResponse: method.
 	// You can also use preprocessErrorResponse: to add an optional HTML body.
 	// 

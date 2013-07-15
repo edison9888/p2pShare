@@ -409,18 +409,34 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	__block NSError *err = nil;
 	
 	dispatch_sync(serverQueue, ^{ @autoreleasepool {
-		
+		NSUserDefaults *defaultCenter=[NSUserDefaults standardUserDefaults];
+        port=[defaultCenter integerForKey:@"recentPort"];
+        
 		success = [asyncSocket acceptOnInterface:interface port:port error:&err];
 		if (success)
 		{
 			HTTPLogInfo(@"%@: Started HTTP server on port %hu", THIS_FILE, [asyncSocket localPort]);
-			
+			[defaultCenter setInteger:[asyncSocket localPort] forKey:@"recentPort"];
+            [defaultCenter synchronize];
 			isRunning = YES;
 			[self publishBonjour];
 		}
 		else
 		{
-			HTTPLogError(@"%@: Failed to start HTTP Server: %@", THIS_FILE, err);
+            port=0;
+            success = [asyncSocket acceptOnInterface:interface port:port error:&err];
+            if (success)
+            {
+                HTTPLogInfo(@"%@: Started HTTP server on port %hu", THIS_FILE, [asyncSocket localPort]);
+                [defaultCenter setInteger:[asyncSocket localPort] forKey:@"recentPort"];
+                [defaultCenter synchronize];
+                isRunning = YES;
+                [self publishBonjour];
+            }
+            else
+            {
+                HTTPLogError(@"%@: Failed to start HTTP Server: %@", THIS_FILE, err);
+            }
 		}
 	}});
 	
