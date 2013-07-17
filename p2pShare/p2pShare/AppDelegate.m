@@ -11,7 +11,8 @@
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "MyHTTPConnection.h"
-
+#import "LocalShareManager.h"
+#import "ReceiveAndSendPackage.h"
 #import "LocalNetworkViewController.h"
 #import "ChooseViewController.h"
 
@@ -24,14 +25,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-	
+	[ReceiveAndSendPackage sharedInstance].managedObjectContext=[self managedObjectContext];
 	// Create server using our custom MyHTTPServer class
 	httpServer = [[HTTPServer alloc] init];
-    [httpServer setType:@"_http._tcp."];
+    [httpServer setType:@"_p2pShare._tcp."];
     [httpServer setConnectionClass:[MyHTTPConnection class]];
     [self startServer];
     
-    
+    [[LocalShareManager sharedInstance]browseLocalLanServices];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     ChooseViewController *chooseVC=[[ChooseViewController alloc]init];
@@ -108,8 +109,9 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"p2pShare" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+//    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"p2pShare" withExtension:@"momd"];
+//    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
     return _managedObjectModel;
 }
 
@@ -121,11 +123,22 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"p2pShare.sqlite"];
+    NSString *storePath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"p2pShare.sqlite"];
+	/*
+	 Set up the store.
+	 For the sake of illustration, provide a pre-populated default store.
+	 */
+    NSURL *storeURL = [NSURL fileURLWithPath:storePath];
     
     NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -158,12 +171,10 @@
 
 #pragma mark - Application's Documents directory
 
-// Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+// Returns the string to the application's Documents directory.
+- (NSString *)applicationDocumentsDirectory {
+	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
-
 
 #pragma mark - CocoaHttpServer
 
