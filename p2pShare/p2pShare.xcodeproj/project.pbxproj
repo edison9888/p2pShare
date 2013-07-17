@@ -19,6 +19,7 @@
 		168DE0E517968EFA00533C55 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0DA17968EFA00533C55 /* AFURLConnectionOperation.m */; };
 		168DE0E617968EFA00533C55 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0DC17968EFA00533C55 /* AFXMLRequestOperation.m */; };
 		168DE0E717968EFA00533C55 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0DE17968EFA00533C55 /* UIImageView+AFNetworking.m */; };
+		168DE0EA179690C500533C55 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0E9179690C500533C55 /* AFAppDotNetAPIClient.m */; };
 		16C2C67C178F8EFF00D3A4D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C67B178F8EFF00D3A4D6 /* UIKit.framework */; };
 		16C2C67E178F8EFF00D3A4D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C67D178F8EFF00D3A4D6 /* Foundation.framework */; };
 		16C2C680178F8EFF00D3A4D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C67F178F8EFF00D3A4D6 /* CoreGraphics.framework */; };
@@ -98,6 +99,8 @@
 		168DE0DC17968EFA00533C55 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		168DE0DD17968EFA00533C55 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		168DE0DE17968EFA00533C55 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		168DE0E8179690C500533C55 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
+		168DE0E9179690C500533C55 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		16C2C678178F8EFF00D3A4D6 /* p2pShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p2pShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C2C67B178F8EFF00D3A4D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		16C2C67D178F8EFF00D3A4D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -223,6 +226,8 @@
 		168DE0CB17968EFA00533C55 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				168DE0E8179690C500533C55 /* AFAppDotNetAPIClient.h */,
+				168DE0E9179690C500533C55 /* AFAppDotNetAPIClient.m */,
 				168DE0CC17968EFA00533C55 /* AFHTTPClient.h */,
 				168DE0CD17968EFA00533C55 /* AFHTTPClient.m */,
 				168DE0CE17968EFA00533C55 /* AFHTTPRequestOperation.h */,
@@ -610,6 +615,7 @@
 				168DE0E517968EFA00533C55 /* AFURLConnectionOperation.m in Sources */,
 				168DE0E617968EFA00533C55 /* AFXMLRequestOperation.m in Sources */,
 				168DE0E717968EFA00533C55 /* UIImageView+AFNetworking.m in Sources */,
+				168DE0EA179690C500533C55 /* AFAppDotNetAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
