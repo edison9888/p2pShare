@@ -13,7 +13,6 @@
 #import "MyHTTPConnection.h"
 #import "LocalShareManager.h"
 #import "ReceiveAndSendPackage.h"
-#import "LocalNetworkViewController.h"
 #import "ChooseViewController.h"
 
 @implementation AppDelegate

@@ -7,7 +7,6 @@
 //
 
 #import "ChooseViewController.h"
-#import "LocalNetworkViewController.h"
 
 @interface ChooseViewController ()
 
@@ -37,8 +36,7 @@
     switch (button.tag) {
         case 0:
         {
-            LocalNetworkViewController *localVC=[[LocalNetworkViewController alloc]init];
-            [self.navigationController pushViewController:localVC animated:YES];
+
         }
             break;
         case 1:
