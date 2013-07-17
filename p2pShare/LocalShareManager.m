@@ -11,7 +11,9 @@
 #include <netdb.h>
 #include <net/if.h>
 #include <ifaddrs.h>
-
+#import "AFJSONRequestOperation.h"
+#import "AFAppDotNetAPIClient.h"
+#import "ReceiveAndSendPackage.h"
 
 
 static LocalShareManager *_sharedManagerInstance=nil;
@@ -35,6 +37,11 @@ static LocalShareManager *_sharedManagerInstance=nil;
     _searching = NO;
     _services=[[NSMutableArray alloc]init];
     _tmpServices=[[NSMutableArray alloc]init];
+    _trackQueue =[[ASINetworkQueue alloc]init];
+    [_trackQueue reset];
+    [_trackQueue setRequestDidFinishSelector:@selector(requestFinished:)];
+    [_trackQueue setRequestDidFailSelector:@selector(requestFailed:)];
+    [_trackQueue setMaxConcurrentOperationCount:5];
     return self;
 }
 
@@ -49,6 +56,20 @@ static LocalShareManager *_sharedManagerInstance=nil;
         tmpService.delegate=self;
         [tmpService resolveWithTimeout:5.0];
     }
+}
+
+-(void)exchangeWithHost:(NSString *)address port:(UInt16)port
+{
+    NSLog(@"exchange with addr:%@ port:%d",address,port);
+    NSString *urlString=[NSString stringWithFormat:@"http://%@:%d/post",address,port];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request=[[ASIHTTPRequest alloc]initWithURL:url];
+    [request setShouldContinueWhenAppEntersBackground:YES];
+    [request setTimeOutSeconds:15.0];
+    NSData *bodyData=[[ReceiveAndSendPackage sharedInstance] dataForExchange];
+    [request appendPostData:bodyData];
+    [_trackQueue addOperation:request];
+    [_trackQueue go];
 }
 
 -(NSNetServiceBrowser *)domainBrowser
@@ -133,6 +154,7 @@ static LocalShareManager *_sharedManagerInstance=nil;
         // necessary connection information
         NSLog(@"resolved name:%@ ip:%@  port:%d type:%@",[netService name],address,[netService port],[netService type]);
         //add task to share information with this IP
+        [self exchangeWithHost:address port:[netService port]];
     }
 }
 
@@ -209,5 +231,19 @@ static LocalShareManager *_sharedManagerInstance=nil;
         // Update the user interface to indicate not searching
     }
 }
+
+#pragma ASIHttpRequest Delegate
+
+-(void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSData *responseData = [request responseData];
+    [[ReceiveAndSendPackage sharedInstance]addData:responseData];
+}
+
+-(void)requestFailed:(ASIHTTPRequest *)request
+{
+    
+}
+
 
 @end
