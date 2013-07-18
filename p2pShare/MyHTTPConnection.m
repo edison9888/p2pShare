@@ -3,6 +3,7 @@
 #import "HTTPDataResponse.h"
 #import "DDNumber.h"
 #import "HTTPLogging.h"
+#import "ReceiveAndSendPackage.h"
 
 // Log levels : off, error, warn, info, verbose
 // Other flags: trace
@@ -23,7 +24,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 	
 	if ([method isEqualToString:@"POST"])
 	{
-		if ([path isEqualToString:@"/post.html"])
+		if ([path isEqualToString:@"/post"])
 		{
 			// Let's be extra cautious, and make sure the upload isn't 5 gigs
 			
@@ -50,7 +51,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 {
 	HTTPLogTrace();
 	
-	if ([method isEqualToString:@"POST"] && [path isEqualToString:@"/post.html"])
+	if ([method isEqualToString:@"POST"] && [path isEqualToString:@"/post"])
 	{
 		HTTPLogVerbose(@"%@[%p]: postContentLength: %qu", THIS_FILE, self, requestContentLength);
 		
@@ -59,13 +60,12 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		NSData *postData = [request body];
 		if (postData)
 		{
-			postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+			[[ReceiveAndSendPackage sharedInstance]addData:postData];
 		}
 		
 		HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
         
-        NSDictionary *responseDic=[NSDictionary dictionaryWithObjectsAndKeys:@"name",@"haha",@"sex",@"female", nil];
-		NSData *response = [NSJSONSerialization dataWithJSONObject:responseDic options:NSJSONWritingPrettyPrinted error:nil];
+        NSData *response = [[ReceiveAndSendPackage sharedInstance] dataForExchange]
 		
 		return [[HTTPDataResponse alloc] initWithData:response];
 	}
