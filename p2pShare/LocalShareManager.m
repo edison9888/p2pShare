@@ -36,7 +36,6 @@ static LocalShareManager *_sharedManagerInstance=nil;
     self=[super init];
     _domains = [[NSMutableArray alloc] init];
     _searching = NO;
-    _services=[[NSMutableArray alloc]init];
     _tmpServices=[[NSMutableArray alloc]init];
     _trackQueue =[[ASINetworkQueue alloc]init];
     [_trackQueue reset];
@@ -155,6 +154,11 @@ static LocalShareManager *_sharedManagerInstance=nil;
         //add task to share information with this IP
         [self exchangeWithHost:address port:[netService port]];
     }
+    for (NSNetService *tmp in _tmpServices) {
+        if (tmp==netService) {
+            [_tmpServices removeObject:tmp];
+        }
+    }
 }
 
 // Sent if resolution fails
@@ -162,7 +166,11 @@ static LocalShareManager *_sharedManagerInstance=nil;
      didNotResolve:(NSDictionary *)errorDict
 {
     [self handleError:[errorDict objectForKey:NSNetServicesErrorCode] withService:netService];
-    [_services removeObject:netService];
+    for (NSNetService *tmp in _tmpServices) {
+        if (tmp==netService) {
+            [_tmpServices removeObject:tmp];
+        }
+    }
 }
 
 // Error handling code
@@ -235,7 +243,6 @@ static LocalShareManager *_sharedManagerInstance=nil;
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSString *responseString=[request responseString];
     NSData *responseData = [request responseData];
     [[ReceiveAndSendPackage sharedInstance]addData:responseData];
 }

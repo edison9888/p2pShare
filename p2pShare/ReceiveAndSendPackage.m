@@ -26,6 +26,9 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
 
 -(void)addData:(NSData *)receiveData
 {
+    NSString* logdata;
+    logdata = [[NSString alloc] initWithData:receiveData encoding:NSASCIIStringEncoding];
+    NSLog(@"add Data :%@\n",logdata);
     NSError *error = nil;
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:receiveData
                                                     options:NSJSONReadingAllowFragments
@@ -77,6 +80,7 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     if ([arrayOfDicts count]>0) {
         result=[NSJSONSerialization dataWithJSONObject:arrayOfDicts options:NSJSONWritingPrettyPrinted error:nil];
     }
+    NSLog(@"data to exchange :%@",result);
     return result;
 }
 
@@ -85,7 +89,7 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
-    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
     
     
     NSDate *destDate= [dateFormatter dateFromString:dateString];
