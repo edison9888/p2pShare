@@ -14,6 +14,7 @@
 #import "AFJSONRequestOperation.h"
 #import "AFAppDotNetAPIClient.h"
 #import "ReceiveAndSendPackage.h"
+#import "ASIFormDataRequest.h"
 
 
 static LocalShareManager *_sharedManagerInstance=nil;
@@ -39,8 +40,6 @@ static LocalShareManager *_sharedManagerInstance=nil;
     _tmpServices=[[NSMutableArray alloc]init];
     _trackQueue =[[ASINetworkQueue alloc]init];
     [_trackQueue reset];
-    [_trackQueue setRequestDidFinishSelector:@selector(requestFinished:)];
-    [_trackQueue setRequestDidFailSelector:@selector(requestFailed:)];
     [_trackQueue setMaxConcurrentOperationCount:5];
     return self;
 }
@@ -63,9 +62,9 @@ static LocalShareManager *_sharedManagerInstance=nil;
     NSLog(@"exchange with addr:%@ port:%d",address,port);
     NSString *urlString=[NSString stringWithFormat:@"http://%@:%d/post",address,port];
     NSURL *url = [NSURL URLWithString:urlString];
-    ASIHTTPRequest *request=[[ASIHTTPRequest alloc]initWithURL:url];
-    [request setShouldContinueWhenAppEntersBackground:YES];
+    ASIFormDataRequest *request=[[ASIFormDataRequest alloc]initWithURL:url];
     [request setTimeOutSeconds:15.0];
+    request.delegate=self;
     NSData *bodyData=[[ReceiveAndSendPackage sharedInstance] dataForExchange];
     [request appendPostData:bodyData];
     [_trackQueue addOperation:request];
@@ -214,7 +213,7 @@ static LocalShareManager *_sharedManagerInstance=nil;
 // Error handling code
 - (void)handleError:(NSNumber *)error
 {
-    NSLog(@"An error occurred. Error code = %@", error);
+    NSLog(@"Netservice An error occurred. Error code = %@", error);
     // Handle error here
 }
 
@@ -236,6 +235,7 @@ static LocalShareManager *_sharedManagerInstance=nil;
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
+    NSString *responseString=[request responseString];
     NSData *responseData = [request responseData];
     [[ReceiveAndSendPackage sharedInstance]addData:responseData];
 }

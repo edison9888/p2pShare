@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16406068179A6D66009F53EA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16406067179A6D66009F53EA /* MainViewController.m */; };
+		1640606B179A70EE009F53EA /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640606A179A70EE009F53EA /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1640606E179A800F009F53EA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1640606D179A800F009F53EA /* QuartzCore.framework */; };
+		16406071179A8D80009F53EA /* AddRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16406070179A8D80009F53EA /* AddRecordViewController.m */; };
 		16444FE11796DC3300FFE1E6 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 16444FCE1796DC3300FFE1E6 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		16444FE21796DC3300FFE1E6 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 16444FD11796DC3300FFE1E6 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		16444FE31796DC3300FFE1E6 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 16444FD31796DC3300FFE1E6 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -82,9 +86,19 @@
 		16C2C748178FC3E000D3A4D6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C747178FC3E000D3A4D6 /* CoreTelephony.framework */; };
 		16C2C74A178FC49D00D3A4D6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C749178FC49D00D3A4D6 /* Security.framework */; };
 		16C2C750178FF30D00D3A4D6 /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2C74F178FF30D00D3A4D6 /* MyHTTPConnection.m */; };
+		16C8D235179AE82900A39643 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8D234179AE82900A39643 /* NSDate-Utilities.m */; };
+		16C8D238179AE83700A39643 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8D237179AE83700A39643 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		16C8D23B179AE84300A39643 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C8D239179AE84300A39643 /* libMobClickLibrary.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16406066179A6D66009F53EA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		16406067179A6D66009F53EA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		16406069179A70EE009F53EA /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		1640606A179A70EE009F53EA /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		1640606D179A800F009F53EA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1640606F179A8D80009F53EA /* AddRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecordViewController.h; sourceTree = "<group>"; };
+		16406070179A8D80009F53EA /* AddRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecordViewController.m; sourceTree = "<group>"; };
 		16444FCD1796DC3300FFE1E6 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		16444FCE1796DC3300FFE1E6 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		16444FCF1796DC3300FFE1E6 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -224,6 +238,12 @@
 		16C2C749178FC49D00D3A4D6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		16C2C74E178FF30D00D3A4D6 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHTTPConnection.h; sourceTree = "<group>"; };
 		16C2C74F178FF30D00D3A4D6 /* MyHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHTTPConnection.m; sourceTree = "<group>"; };
+		16C8D233179AE82900A39643 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
+		16C8D234179AE82900A39643 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
+		16C8D236179AE83700A39643 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		16C8D237179AE83700A39643 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		16C8D239179AE84300A39643 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		16C8D23A179AE84300A39643 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1640606E179A800F009F53EA /* QuartzCore.framework in Frameworks */,
 				16444FF21796E7D900FFE1E6 /* libz.dylib in Frameworks */,
 				16444FEE1796E7A200FFE1E6 /* MobileCoreServices.framework in Frameworks */,
 				16C2C744178FC3CA00D3A4D6 /* CFNetwork.framework in Frameworks */,
@@ -242,12 +263,22 @@
 				16C2C67E178F8EFF00D3A4D6 /* Foundation.framework in Frameworks */,
 				16C2C680178F8EFF00D3A4D6 /* CoreGraphics.framework in Frameworks */,
 				16C2C682178F8EFF00D3A4D6 /* CoreData.framework in Frameworks */,
+				16C8D23B179AE84300A39643 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1640606C179A70FF009F53EA /* EGOPullRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				16406069179A70EE009F53EA /* EGORefreshTableHeaderView.h */,
+				1640606A179A70EE009F53EA /* EGORefreshTableHeaderView.m */,
+			);
+			name = EGOPullRefresh;
+			sourceTree = "<group>";
+		};
 		16444FCC1796DC1C00FFE1E6 /* ASIhttprequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +358,7 @@
 		16C2C66F178F8EFF00D3A4D6 = {
 			isa = PBXGroup;
 			children = (
+				16C8D22F179AE46900A39643 /* Utility */,
 				16444FE91796E75100FFE1E6 /* Reachability */,
 				16444FCC1796DC1C00FFE1E6 /* ASIhttprequest */,
 				168DE0CB17968EFA00533C55 /* AFNetworking */,
@@ -353,6 +385,7 @@
 		16C2C67A178F8EFF00D3A4D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1640606D179A800F009F53EA /* QuartzCore.framework */,
 				16444FF11796E7D900FFE1E6 /* libz.dylib */,
 				16444FED1796E7A200FFE1E6 /* MobileCoreServices.framework */,
 				16C2C749178FC49D00D3A4D6 /* Security.framework */,
@@ -376,6 +409,10 @@
 				16C2C6A7178F9BEC00D3A4D6 /* ChooseViewController.h */,
 				16C2C6A8178F9BEC00D3A4D6 /* ChooseViewController.m */,
 				16C2C6A9178F9BEC00D3A4D6 /* ChooseViewController.xib */,
+				16406066179A6D66009F53EA /* MainViewController.h */,
+				16406067179A6D66009F53EA /* MainViewController.m */,
+				1640606F179A8D80009F53EA /* AddRecordViewController.h */,
+				16406070179A8D80009F53EA /* AddRecordViewController.m */,
 				16C2C684178F8EFF00D3A4D6 /* Supporting Files */,
 			);
 			path = p2pShare;
@@ -577,6 +614,44 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		16C8D22F179AE46900A39643 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				16C8D232179AE7F400A39643 /* Umeng */,
+				16C8D231179AE7E700A39643 /* OpenUDID */,
+				16C8D230179AE7D700A39643 /* NSDate */,
+				1640606C179A70FF009F53EA /* EGOPullRefresh */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		16C8D230179AE7D700A39643 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				16C8D233179AE82900A39643 /* NSDate-Utilities.h */,
+				16C8D234179AE82900A39643 /* NSDate-Utilities.m */,
+			);
+			name = NSDate;
+			sourceTree = "<group>";
+		};
+		16C8D231179AE7E700A39643 /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				16C8D236179AE83700A39643 /* OpenUDID.h */,
+				16C8D237179AE83700A39643 /* OpenUDID.m */,
+			);
+			name = OpenUDID;
+			sourceTree = "<group>";
+		};
+		16C8D232179AE7F400A39643 /* Umeng */ = {
+			isa = PBXGroup;
+			children = (
+				16C8D239179AE84300A39643 /* libMobClickLibrary.a */,
+				16C8D23A179AE84300A39643 /* MobClick.h */,
+			);
+			name = Umeng;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -702,6 +777,11 @@
 				16444FE71796DC3300FFE1E6 /* ASIInputStream.m in Sources */,
 				16444FE81796DC3300FFE1E6 /* ASINetworkQueue.m in Sources */,
 				16444FEC1796E75100FFE1E6 /* Reachability.m in Sources */,
+				16406068179A6D66009F53EA /* MainViewController.m in Sources */,
+				1640606B179A70EE009F53EA /* EGORefreshTableHeaderView.m in Sources */,
+				16406071179A8D80009F53EA /* AddRecordViewController.m in Sources */,
+				16C8D235179AE82900A39643 /* NSDate-Utilities.m in Sources */,
+				16C8D238179AE83700A39643 /* OpenUDID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +862,10 @@
 				GCC_PREFIX_HEADER = "p2pShare/p2pShare-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDK_ROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "p2pShare/p2pShare-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -794,6 +878,10 @@
 				GCC_PREFIX_HEADER = "p2pShare/p2pShare-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDK_ROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "p2pShare/p2pShare-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

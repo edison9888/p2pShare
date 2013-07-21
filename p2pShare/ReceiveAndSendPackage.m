@@ -117,19 +117,19 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
         // Create the fetch request for the entity.
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Topic" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.
-        NSSortDescriptor *sortDescriptorFinish = [[NSSortDescriptor alloc] initWithKey:@"isFinished" ascending:NO];
+        NSSortDescriptor *sortDescriptorUpdate = [[NSSortDescriptor alloc] initWithKey:@"lastUpdateTime" ascending:YES];
         //        NSSortDescriptor *sortDescriptorDate = [[NSSortDescriptor alloc] initWithKey:@"endDate" ascending:NO];
-        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptorFinish, nil];//,sortDescriptorDate, nil];
+        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptorUpdate, nil];//,sortDescriptorDate, nil];
         
         [fetchRequest setSortDescriptors:sortDescriptors];
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:@"isFinished" cacheName:nil];
+        NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
         aFetchedResultsController.delegate = self;
         self.fetchedResultsController = aFetchedResultsController;
     }

@@ -28,7 +28,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		{
 			// Let's be extra cautious, and make sure the upload isn't 5 gigs
 			
-			return requestContentLength < 50;
+			return requestContentLength < 128*1024;
 		}
 	}
 	
@@ -65,7 +65,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		
 		HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
         
-        NSData *response = [[ReceiveAndSendPackage sharedInstance] dataForExchange]
+        NSData *response = [[ReceiveAndSendPackage sharedInstance] dataForExchange];
 		
 		return [[HTTPDataResponse alloc] initWithData:response];
 	}

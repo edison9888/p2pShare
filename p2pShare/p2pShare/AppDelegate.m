@@ -13,6 +13,7 @@
 #import "MyHTTPConnection.h"
 #import "LocalShareManager.h"
 #import "ReceiveAndSendPackage.h"
+#import "MainViewController.h"
 #import "ChooseViewController.h"
 
 @implementation AppDelegate
@@ -34,8 +35,9 @@
     [[LocalShareManager sharedInstance]browseLocalLanServices];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    ChooseViewController *chooseVC=[[ChooseViewController alloc]init];
-    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:chooseVC];
+    MainViewController *mainVC=[[MainViewController alloc]initWithEntityName:@"Topic" predicateBy:nil sortBy:@"lastUpdateTime" context:[self managedObjectContext]];
+    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:mainVC];
+    [nav setToolbarHidden:YES animated:YES];
     self.window.rootViewController=nav;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
