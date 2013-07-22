@@ -27,25 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    UIBarButtonItem *doneButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
-    self.navigationItem.hidesBackButton=YES;
-    self.navigationItem.rightBarButtonItem=doneButton;
+
 }
 
--(void)done
-{
-    CATransition *transition = [CATransition animation];
-    transition.duration = 0.55;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
-    transition.type = kCATransitionFromRight;
-    [transition setType:kCATransitionFromBottom];
-    transition.subtype = kCATransitionFromBottom;
-    transition.delegate = self;
-    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    
-    self.navigationController.navigationBarHidden = NO;
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 - (void)didReceiveMemoryWarning
 {

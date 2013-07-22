@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Topic.h"
+#import "SZTextView.h"
 
-@interface AddRecordViewController : UIViewController
+@interface AddRecordViewController : UIViewController<UITextViewDelegate>
 
 
 
-@property(nonatomic,strong)     UITextView *contentField;
+@property(nonatomic,strong)     SZTextView *contentField;
 @property(nonatomic, strong)     Topic *item;
 
 

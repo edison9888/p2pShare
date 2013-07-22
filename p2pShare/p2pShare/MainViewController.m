@@ -10,7 +10,8 @@
 #import "Topic.h"
 #import "LocalShareManager.h"
 #import "AddRecordViewController.h"
-#import "SettingViewController.h"
+#import "NetworkViewController.h"
+
 @interface MainViewController ()
 
 @end
@@ -118,7 +119,8 @@
 
 -(void)setting
 {
-    SettingViewController *setVC=[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+    NetworkViewController *netVC=[[NetworkViewController alloc]init];
+    
     CATransition *transition = [CATransition animation];
     transition.duration = 0.45;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
@@ -129,7 +131,7 @@
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     
     self.navigationController.navigationBarHidden = NO;
-    [self.navigationController pushViewController:setVC animated:NO];
+    [self.navigationController pushViewController:netVC animated:NO];
 }
 
 -(void)addRecord

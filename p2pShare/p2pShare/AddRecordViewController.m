@@ -35,10 +35,16 @@
     self.navigationItem.leftBarButtonItem=cancelButton;
     self.navigationItem.rightBarButtonItem=sendButton;
     
-    contentField=[[UITextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    
+    contentField=[[SZTextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    contentField.placeholder=NSLocalizedString(@"Share interesting things", nil);
+    contentField.delegate=self;
     [self.view addSubview:contentField];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [contentField becomeFirstResponder];
 }
 
 -(void)goBack
@@ -77,6 +83,13 @@
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark UITextview Delegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -24,6 +24,8 @@
 		16444FEC1796E75100FFE1E6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 16444FEB1796E75100FFE1E6 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		16444FEE1796E7A200FFE1E6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16444FED1796E7A200FFE1E6 /* MobileCoreServices.framework */; };
 		16444FF21796E7D900FFE1E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 16444FF11796E7D900FFE1E6 /* libz.dylib */; };
+		167C4019179D7F6500D76F2C /* NetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C4018179D7F6500D76F2C /* NetworkViewController.m */; };
+		167C4020179D93C600D76F2C /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 167C401F179D93C600D76F2C /* SZTextView.m */; };
 		168DE0C3179637E600533C55 /* LocalShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0C2179637E600533C55 /* LocalShareManager.m */; };
 		168DE0C6179646A300533C55 /* ReceiveAndSendPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0C5179646A300533C55 /* ReceiveAndSendPackage.m */; };
 		168DE0CA1796695000533C55 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0C91796695000533C55 /* Topic.m */; };
@@ -48,8 +50,6 @@
 		16C2C692178F8F0000D3A4D6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C2C691178F8F0000D3A4D6 /* Default@2x.png */; };
 		16C2C694178F8F0000D3A4D6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C2C693178F8F0000D3A4D6 /* Default-568h@2x.png */; };
 		16C2C697178F8F0000D3A4D6 /* p2pShare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16C2C695178F8F0000D3A4D6 /* p2pShare.xcdatamodeld */; };
-		16C2C6AA178F9BEC00D3A4D6 /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2C6A8178F9BEC00D3A4D6 /* ChooseViewController.m */; };
-		16C2C6AB178F9BEC00D3A4D6 /* ChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C2C6A9178F9BEC00D3A4D6 /* ChooseViewController.xib */; };
 		16C2C708178FC38B00D3A4D6 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2C6D9178FC38B00D3A4D6 /* DDData.m */; };
 		16C2C709178FC38B00D3A4D6 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2C6DB178FC38B00D3A4D6 /* DDNumber.m */; };
 		16C2C70A178FC38B00D3A4D6 /* DDRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2C6DD178FC38B00D3A4D6 /* DDRange.m */; };
@@ -94,16 +94,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		162EA67C179CFFF900515F4F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		162EA67D179CFFF900515F4F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		162EA67E179CFFF900515F4F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		16406066179A6D66009F53EA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		16406067179A6D66009F53EA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		162EA67C179CFFF900515F4F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = p2pShare/SettingViewController.h; sourceTree = "<group>"; };
+		162EA67D179CFFF900515F4F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = p2pShare/SettingViewController.m; sourceTree = "<group>"; };
+		162EA67E179CFFF900515F4F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingViewController.xib; path = p2pShare/SettingViewController.xib; sourceTree = "<group>"; };
+		16406066179A6D66009F53EA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = p2pShare/MainViewController.h; sourceTree = "<group>"; };
+		16406067179A6D66009F53EA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = p2pShare/MainViewController.m; sourceTree = "<group>"; };
 		16406069179A70EE009F53EA /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		1640606A179A70EE009F53EA /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		1640606D179A800F009F53EA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		1640606F179A8D80009F53EA /* AddRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecordViewController.h; sourceTree = "<group>"; };
-		16406070179A8D80009F53EA /* AddRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecordViewController.m; sourceTree = "<group>"; };
+		1640606F179A8D80009F53EA /* AddRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddRecordViewController.h; path = p2pShare/AddRecordViewController.h; sourceTree = "<group>"; };
+		16406070179A8D80009F53EA /* AddRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddRecordViewController.m; path = p2pShare/AddRecordViewController.m; sourceTree = "<group>"; };
 		16444FCD1796DC3300FFE1E6 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		16444FCE1796DC3300FFE1E6 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		16444FCF1796DC3300FFE1E6 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -128,6 +128,10 @@
 		16444FEB1796E75100FFE1E6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		16444FED1796E7A200FFE1E6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		16444FF11796E7D900FFE1E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		167C4017179D7F6500D76F2C /* NetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkViewController.h; sourceTree = "<group>"; };
+		167C4018179D7F6500D76F2C /* NetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkViewController.m; sourceTree = "<group>"; };
+		167C401E179D93C600D76F2C /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTextView.h; sourceTree = "<group>"; };
+		167C401F179D93C600D76F2C /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
 		168DE0C1179637E600533C55 /* LocalShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalShareManager.h; sourceTree = "<group>"; };
 		168DE0C2179637E600533C55 /* LocalShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalShareManager.m; sourceTree = "<group>"; };
 		168DE0C4179646A300533C55 /* ReceiveAndSendPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiveAndSendPackage.h; sourceTree = "<group>"; };
@@ -170,9 +174,6 @@
 		16C2C691178F8F0000D3A4D6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		16C2C693178F8F0000D3A4D6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		16C2C696178F8F0000D3A4D6 /* p2pShare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = p2pShare.xcdatamodel; sourceTree = "<group>"; };
-		16C2C6A7178F9BEC00D3A4D6 /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
-		16C2C6A8178F9BEC00D3A4D6 /* ChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
-		16C2C6A9178F9BEC00D3A4D6 /* ChooseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseViewController.xib; sourceTree = "<group>"; };
 		16C2C6D8178FC38B00D3A4D6 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
 		16C2C6D9178FC38B00D3A4D6 /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
 		16C2C6DA178FC38B00D3A4D6 /* DDNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNumber.h; sourceTree = "<group>"; };
@@ -320,6 +321,31 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		167C4015179D7EE700D76F2C /* FirstTab */ = {
+			isa = PBXGroup;
+			children = (
+				16406066179A6D66009F53EA /* MainViewController.h */,
+				16406067179A6D66009F53EA /* MainViewController.m */,
+				1640606F179A8D80009F53EA /* AddRecordViewController.h */,
+				16406070179A8D80009F53EA /* AddRecordViewController.m */,
+				167C401E179D93C600D76F2C /* SZTextView.h */,
+				167C401F179D93C600D76F2C /* SZTextView.m */,
+				167C4017179D7F6500D76F2C /* NetworkViewController.h */,
+				167C4018179D7F6500D76F2C /* NetworkViewController.m */,
+			);
+			name = FirstTab;
+			sourceTree = "<group>";
+		};
+		167C4016179D7F1B00D76F2C /* SecondTab */ = {
+			isa = PBXGroup;
+			children = (
+				162EA67C179CFFF900515F4F /* SettingViewController.h */,
+				162EA67D179CFFF900515F4F /* SettingViewController.m */,
+				162EA67E179CFFF900515F4F /* SettingViewController.xib */,
+			);
+			name = SecondTab;
+			sourceTree = "<group>";
+		};
 		168DE0C7179668CC00533C55 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +399,8 @@
 				16C2C69F178F8F6E00D3A4D6 /* P2PNetwork */,
 				16C2C69E178F8F5F00D3A4D6 /* localNetwork */,
 				16C2C69D178F8F4200D3A4D6 /* bluetooth */,
+				167C4015179D7EE700D76F2C /* FirstTab */,
+				167C4016179D7F1B00D76F2C /* SecondTab */,
 				16C2C683178F8EFF00D3A4D6 /* p2pShare */,
 				16C2C67A178F8EFF00D3A4D6 /* Frameworks */,
 				16C2C679178F8EFF00D3A4D6 /* Products */,
@@ -411,16 +439,6 @@
 			children = (
 				16C2C68C178F8F0000D3A4D6 /* AppDelegate.h */,
 				16C2C68D178F8F0000D3A4D6 /* AppDelegate.m */,
-				16C2C6A7178F9BEC00D3A4D6 /* ChooseViewController.h */,
-				16C2C6A8178F9BEC00D3A4D6 /* ChooseViewController.m */,
-				16C2C6A9178F9BEC00D3A4D6 /* ChooseViewController.xib */,
-				16406066179A6D66009F53EA /* MainViewController.h */,
-				16406067179A6D66009F53EA /* MainViewController.m */,
-				1640606F179A8D80009F53EA /* AddRecordViewController.h */,
-				16406070179A8D80009F53EA /* AddRecordViewController.m */,
-				162EA67C179CFFF900515F4F /* SettingViewController.h */,
-				162EA67D179CFFF900515F4F /* SettingViewController.m */,
-				162EA67E179CFFF900515F4F /* SettingViewController.xib */,
 				16C2C684178F8EFF00D3A4D6 /* Supporting Files */,
 			);
 			path = p2pShare;
@@ -715,7 +733,6 @@
 				16C2C690178F8F0000D3A4D6 /* Default.png in Resources */,
 				16C2C692178F8F0000D3A4D6 /* Default@2x.png in Resources */,
 				16C2C694178F8F0000D3A4D6 /* Default-568h@2x.png in Resources */,
-				16C2C6AB178F9BEC00D3A4D6 /* ChooseViewController.xib in Resources */,
 				16C2C736178FC3AD00D3A4D6 /* About.txt in Resources */,
 				16C2C738178FC3AD00D3A4D6 /* About.txt in Resources */,
 				16C2C740178FC3AD00D3A4D6 /* README.txt in Resources */,
@@ -733,7 +750,6 @@
 				16C2C68A178F8F0000D3A4D6 /* main.m in Sources */,
 				16C2C68E178F8F0000D3A4D6 /* AppDelegate.m in Sources */,
 				16C2C697178F8F0000D3A4D6 /* p2pShare.xcdatamodeld in Sources */,
-				16C2C6AA178F9BEC00D3A4D6 /* ChooseViewController.m in Sources */,
 				16C2C708178FC38B00D3A4D6 /* DDData.m in Sources */,
 				16C2C709178FC38B00D3A4D6 /* DDNumber.m in Sources */,
 				16C2C70A178FC38B00D3A4D6 /* DDRange.m in Sources */,
@@ -792,6 +808,8 @@
 				16C8D235179AE82900A39643 /* NSDate-Utilities.m in Sources */,
 				16C8D238179AE83700A39643 /* OpenUDID.m in Sources */,
 				162EA67F179CFFF900515F4F /* SettingViewController.m in Sources */,
+				167C4019179D7F6500D76F2C /* NetworkViewController.m in Sources */,
+				167C4020179D93C600D76F2C /* SZTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

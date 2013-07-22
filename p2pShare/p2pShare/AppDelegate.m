@@ -14,7 +14,7 @@
 #import "LocalShareManager.h"
 #import "ReceiveAndSendPackage.h"
 #import "MainViewController.h"
-#import "ChooseViewController.h"
+#import "SettingViewController.h"
 
 @implementation AppDelegate
 
@@ -36,9 +36,15 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     MainViewController *mainVC=[[MainViewController alloc]initWithEntityName:@"Topic" predicateBy:nil sortBy:@"lastUpdateTime" context:[self managedObjectContext]];
-    self.navController=[[UINavigationController alloc]initWithRootViewController:mainVC];
+    SettingViewController *setVC=[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+    self.tabController=[[UITabBarController alloc]init];
+    UINavigationController *firstNav=[[UINavigationController alloc]initWithRootViewController:mainVC];
+    UINavigationController *secondNav=[[UINavigationController alloc]initWithRootViewController:setVC];
+    self.tabController.delegate=self;
+    self.tabController.viewControllers=[NSArray arrayWithObjects:firstNav,secondNav, nil];
     
-    self.window.rootViewController=self.navController;
+    
+    self.window.rootViewController=self.tabController;
     self.window.backgroundColor=[UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
