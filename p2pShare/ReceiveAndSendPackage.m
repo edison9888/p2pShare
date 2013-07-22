@@ -36,6 +36,9 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     
     if (jsonArray != nil && error == nil){
         for (NSDictionary *tmpDic in jsonArray) {
+            if ([self isSameData:tmpDic]) {
+                continue;
+            }
             Topic *record=[NSEntityDescription insertNewObjectForEntityForName:@"Topic" inManagedObjectContext:self.managedObjectContext];
             record.lastUpdateTime=[self dateFromString:[tmpDic objectForKey:@"lastUpdateTime"]];
             record.openUDID=[tmpDic objectForKey:@"openUDID"];
@@ -51,6 +54,33 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
             }
         }
     }
+}
+
+-(BOOL)isSameData:(NSDictionary *)dic
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Topic" inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    // Set example predicate and sort orderings...
+    NSDate *lastUpdateTime=[self dateFromString:[dic objectForKey:@"lastUpdateTime"]];
+    NSString *openUDID=[dic objectForKey:@"openUDID"];
+    NSString *content=[dic objectForKey:@"content"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"(openUDID==%@  AND lastUpdateTime == %@ AND  content==%@)", openUDID,lastUpdateTime,content];
+    
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    if ([array count]>0) {
+        NSLog(@"isSameData count:%d content:%@ openUDID:%@ lastUpdateTime:%@",[array count],content,openUDID,[self stringFromDate:lastUpdateTime] );
+        return YES;
+    }
+    else
+    return NO;
 }
 
 -(NSData *)dataForExchange
@@ -83,7 +113,6 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     NSLog(@"data to exchange :%@",result);
     return result;
 }
-
 
 - (NSDate *)dateFromString:(NSString *)dateString{
     

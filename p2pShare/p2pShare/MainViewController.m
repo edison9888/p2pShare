@@ -10,7 +10,7 @@
 #import "Topic.h"
 #import "LocalShareManager.h"
 #import "AddRecordViewController.h"
-
+#import "SettingViewController.h"
 @interface MainViewController ()
 
 @end
@@ -111,8 +111,25 @@
 {
     [super viewDidLoad];
     UIBarButtonItem *addButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(addRecord)];
-    
+    UIBarButtonItem *settingButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(setting)];
+    self.navigationItem.leftBarButtonItem=settingButton;
     self.navigationItem.rightBarButtonItem=addButton;
+}
+
+-(void)setting
+{
+    SettingViewController *setVC=[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.45;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+    transition.type = kCATransitionFromBottom;
+    [transition setType:kCATransitionFromBottom];
+    transition.subtype = kCATransitionFromBottom;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController pushViewController:setVC animated:NO];
 }
 
 -(void)addRecord

@@ -35,7 +35,7 @@
     self.navigationItem.leftBarButtonItem=cancelButton;
     self.navigationItem.rightBarButtonItem=sendButton;
     
-    contentField=[[UITextView alloc]initWithFrame:self.view.frame];
+    contentField=[[UITextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     [self.view addSubview:contentField];
     
@@ -43,6 +43,19 @@
 
 -(void)goBack
 {
+    
+	[item.managedObjectContext deleteObject:item];
+    
+	NSError *error = nil;
+	if (![item.managedObjectContext save:&error]) {
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		abort();
+	}
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -63,7 +76,7 @@
             abort();
         }
     }
-    [self goBack];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -36,10 +36,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     MainViewController *mainVC=[[MainViewController alloc]initWithEntityName:@"Topic" predicateBy:nil sortBy:@"lastUpdateTime" context:[self managedObjectContext]];
-    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:mainVC];
-    [nav setToolbarHidden:YES animated:YES];
-    self.window.rootViewController=nav;
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.navController=[[UINavigationController alloc]initWithRootViewController:mainVC];
+    
+    self.window.rootViewController=self.navController;
+    self.window.backgroundColor=[UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
