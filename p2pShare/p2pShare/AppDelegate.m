@@ -15,6 +15,7 @@
 #import "ReceiveAndSendPackage.h"
 #import "MainViewController.h"
 #import "SettingViewController.h"
+#import "CurrentUserManager.h"
 
 @implementation AppDelegate
 
@@ -26,6 +27,7 @@
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 	[ReceiveAndSendPackage sharedInstance].managedObjectContext=[self managedObjectContext];
+    [[CurrentUserManager sharedInstance] updateLocation];
 	// Create server using our custom MyHTTPServer class
 	httpServer = [[HTTPServer alloc] init];
     [httpServer setType:@"_p2pShare._tcp."];
@@ -36,7 +38,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     MainViewController *mainVC=[[MainViewController alloc]initWithEntityName:@"Topic" predicateBy:nil sortBy:@"lastUpdateTime" context:[self managedObjectContext]];
-    SettingViewController *setVC=[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+    SettingViewController *setVC=[[SettingViewController alloc]initWithStyle:UITableViewStyleGrouped];
     self.tabController=[[UITabBarController alloc]init];
     UINavigationController *firstNav=[[UINavigationController alloc]initWithRootViewController:mainVC];
     UINavigationController *secondNav=[[UINavigationController alloc]initWithRootViewController:setVC];

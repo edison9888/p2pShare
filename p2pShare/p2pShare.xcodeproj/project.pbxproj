@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		162EA67F179CFFF900515F4F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162EA67D179CFFF900515F4F /* SettingViewController.m */; };
-		162EA680179CFFF900515F4F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 162EA67E179CFFF900515F4F /* SettingViewController.xib */; };
+		16354218179E2C4800D7CBA4 /* CurrentUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16354217179E2C4800D7CBA4 /* CurrentUserManager.m */; };
+		1635421A179E2D7A00D7CBA4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16354219179E2D7A00D7CBA4 /* CoreLocation.framework */; };
+		16354220179E676900D7CBA4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1635421F179E676900D7CBA4 /* SettingViewController.m */; };
+		16354223179E82F500D7CBA4 /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16354222179E82F500D7CBA4 /* ChangeNameViewController.m */; };
 		16406068179A6D66009F53EA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16406067179A6D66009F53EA /* MainViewController.m */; };
 		1640606B179A70EE009F53EA /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640606A179A70EE009F53EA /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1640606E179A800F009F53EA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1640606D179A800F009F53EA /* QuartzCore.framework */; };
@@ -94,9 +96,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		162EA67C179CFFF900515F4F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = p2pShare/SettingViewController.h; sourceTree = "<group>"; };
-		162EA67D179CFFF900515F4F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = p2pShare/SettingViewController.m; sourceTree = "<group>"; };
-		162EA67E179CFFF900515F4F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingViewController.xib; path = p2pShare/SettingViewController.xib; sourceTree = "<group>"; };
+		16354216179E2C4800D7CBA4 /* CurrentUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUserManager.h; sourceTree = "<group>"; };
+		16354217179E2C4800D7CBA4 /* CurrentUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUserManager.m; sourceTree = "<group>"; };
+		16354219179E2D7A00D7CBA4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1635421E179E676900D7CBA4 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		1635421F179E676900D7CBA4 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		16354221179E82F500D7CBA4 /* ChangeNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
+		16354222179E82F500D7CBA4 /* ChangeNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
 		16406066179A6D66009F53EA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = p2pShare/MainViewController.h; sourceTree = "<group>"; };
 		16406067179A6D66009F53EA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = p2pShare/MainViewController.m; sourceTree = "<group>"; };
 		16406069179A70EE009F53EA /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -257,6 +263,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1635421A179E2D7A00D7CBA4 /* CoreLocation.framework in Frameworks */,
 				1640606E179A800F009F53EA /* QuartzCore.framework in Frameworks */,
 				16444FF21796E7D900FFE1E6 /* libz.dylib in Frameworks */,
 				16444FEE1796E7A200FFE1E6 /* MobileCoreServices.framework in Frameworks */,
@@ -339,9 +346,10 @@
 		167C4016179D7F1B00D76F2C /* SecondTab */ = {
 			isa = PBXGroup;
 			children = (
-				162EA67C179CFFF900515F4F /* SettingViewController.h */,
-				162EA67D179CFFF900515F4F /* SettingViewController.m */,
-				162EA67E179CFFF900515F4F /* SettingViewController.xib */,
+				1635421E179E676900D7CBA4 /* SettingViewController.h */,
+				1635421F179E676900D7CBA4 /* SettingViewController.m */,
+				16354221179E82F500D7CBA4 /* ChangeNameViewController.h */,
+				16354222179E82F500D7CBA4 /* ChangeNameViewController.m */,
 			);
 			name = SecondTab;
 			sourceTree = "<group>";
@@ -354,6 +362,8 @@
 				168DE0C91796695000533C55 /* Topic.m */,
 				168DE0C4179646A300533C55 /* ReceiveAndSendPackage.h */,
 				168DE0C5179646A300533C55 /* ReceiveAndSendPackage.m */,
+				16354216179E2C4800D7CBA4 /* CurrentUserManager.h */,
+				16354217179E2C4800D7CBA4 /* CurrentUserManager.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -418,6 +428,7 @@
 		16C2C67A178F8EFF00D3A4D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16354219179E2D7A00D7CBA4 /* CoreLocation.framework */,
 				1640606D179A800F009F53EA /* QuartzCore.framework */,
 				16444FF11796E7D900FFE1E6 /* libz.dylib */,
 				16444FED1796E7A200FFE1E6 /* MobileCoreServices.framework */,
@@ -736,7 +747,6 @@
 				16C2C736178FC3AD00D3A4D6 /* About.txt in Resources */,
 				16C2C738178FC3AD00D3A4D6 /* About.txt in Resources */,
 				16C2C740178FC3AD00D3A4D6 /* README.txt in Resources */,
-				162EA680179CFFF900515F4F /* SettingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,9 +817,11 @@
 				16406071179A8D80009F53EA /* AddRecordViewController.m in Sources */,
 				16C8D235179AE82900A39643 /* NSDate-Utilities.m in Sources */,
 				16C8D238179AE83700A39643 /* OpenUDID.m in Sources */,
-				162EA67F179CFFF900515F4F /* SettingViewController.m in Sources */,
 				167C4019179D7F6500D76F2C /* NetworkViewController.m in Sources */,
 				167C4020179D93C600D76F2C /* SZTextView.m in Sources */,
+				16354218179E2C4800D7CBA4 /* CurrentUserManager.m in Sources */,
+				16354220179E676900D7CBA4 /* SettingViewController.m in Sources */,
+				16354223179E82F500D7CBA4 /* ChangeNameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

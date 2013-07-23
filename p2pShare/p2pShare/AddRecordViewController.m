@@ -8,6 +8,7 @@
 
 #import "AddRecordViewController.h"
 #import "OpenUDID.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface AddRecordViewController ()
 
@@ -37,6 +38,13 @@
     
     contentField=[[SZTextView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     contentField.placeholder=NSLocalizedString(@"Share interesting things", nil);
+    contentField.font=[UIFont fontWithName:@"Courier" size:15.0];
+    contentField.layer.borderColor = [UIColor grayColor].CGColor;
+    contentField.layer.borderWidth =1.0;//该属性显示外边框
+    contentField.layer.cornerRadius = 6.0;//通过该值来设置textView边角的弧度
+    contentField.layer.masksToBounds = YES;
+//    NSAttributedString *attribute=[[NSAttributedString alloc]initWithString:@"Letterpress" attributes:@{NSTextEffectsAttributeName:NSTextEffectsLetterpressStyle}];
+    
     contentField.delegate=self;
     [self.view addSubview:contentField];
     
@@ -67,6 +75,11 @@
 
 -(void)addRecord
 {
+    if (contentField.text.length<10) {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"At least input 10 letters", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     if (item) {
         item.content=contentField.text;
         item.lastUpdateTime=[NSDate date];

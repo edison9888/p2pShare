@@ -115,6 +115,7 @@
     UIBarButtonItem *settingButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(setting)];
     self.navigationItem.leftBarButtonItem=settingButton;
     self.navigationItem.rightBarButtonItem=addButton;
+    self.title=NSLocalizedString(@"Home", nil);
 }
 
 -(void)setting
