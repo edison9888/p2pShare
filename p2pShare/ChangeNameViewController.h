@@ -10,4 +10,6 @@
 
 @interface ChangeNameViewController : UIViewController <UITextFieldDelegate>
 
+@property (nonatomic,strong) UITextField *nameField;
+
 @end

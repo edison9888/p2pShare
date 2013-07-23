@@ -8,6 +8,7 @@
 
 #import "ReceiveAndSendPackage.h"
 #import "Topic.h"
+#import "NSDate-Utilities.h"
 
 static ReceiveAndSendPackage *_sharedManagerInstance=nil;
 
@@ -113,6 +114,34 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     NSLog(@"data to exchange :%@",result);
     return result;
 }
+
+
+#pragma mark Data remove
+-(void)removeDataSince:(NSInteger)days
+{
+    NSDate *nowDate=[NSDate date];
+    NSDate *beforeDaysDate=[nowDate dateBySubtractingDays:days];
+    
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription
+                                              entityForName:@"Topic" inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"(lastUpdateTime < %@ )", beforeDaysDate];
+    
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    for (NSManagedObject *tmp in array) {
+        [tmp.managedObjectContext deleteObject:tmp];
+    }
+    
+}
+
+#pragma mark date convert
 
 - (NSDate *)dateFromString:(NSString *)dateString{
     

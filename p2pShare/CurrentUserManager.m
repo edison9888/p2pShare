@@ -83,6 +83,14 @@ static CurrentUserManager *_sharedManagerInstance=nil;
     NSLog(@"locationManager didFailWithError error code :%d",[error code]);
 }
 
+-(void)setNickName:(NSString *)nickName
+{
+    self.nickName=nickName;
+    NSUserDefaults *defaultValue=[NSUserDefaults standardUserDefaults];
+    [defaultValue setObject:self.nickName forKey:@"nickName"];
+    [defaultValue synchronize];
+}
+
 - (void)stopUpdatingLocation {
 
     [locationManager stopUpdatingLocation];

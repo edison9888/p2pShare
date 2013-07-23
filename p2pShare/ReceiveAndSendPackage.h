@@ -25,5 +25,6 @@
 -(void)addData:(NSData *)receiveData;
 -(NSData *)dataForExchange;
 
+-(void)removeDataSince:(NSInteger)days;
 
 @end

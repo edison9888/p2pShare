@@ -8,6 +8,8 @@
 
 #import "SettingViewController.h"
 #import "ChangeNameViewController.h"
+#import "WebViewController.h"
+#import "ReceiveAndSendPackage.h"
 
 @interface SettingViewController ()
 
@@ -33,6 +35,11 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,9 +194,56 @@
             [self.navigationController pushViewController:nameVC animated:YES];
         }
             break;
-            
+        case 1:
+        {
+            WebViewController *webVC=[[WebViewController alloc]init];
+            switch (indexPath.row) {
+                case 0:
+                {
+                    webVC.urlString=@"http://weibo.com/jacobjiangwei";
+                    webVC.title=NSLocalizedString(@"Weibo", nil);
+                }
+                    break;
+                case 1:
+                {
+                    webVC.urlString=@"http://weibo.com/jacobjiangwei";
+                    webVC.title=NSLocalizedString(@"App Store", nil);
+                }
+                    break;
+                case 2:
+                {
+                    webVC.urlString=@"http://jacobjiangwei.duapp.com";
+                    webVC.title=NSLocalizedString(@"Author Website", nil);
+                }
+                    break;
+                default:
+                    break;
+            }
+            [self.navigationController pushViewController:webVC animated:YES];
+        }
+            break;
+        case 2:
+        {
+            UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Delete N days away", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"All", nil) otherButtonTitles:NSLocalizedString(@"7 days", nil),NSLocalizedString(@"3 days", nil), nil];
+            sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+            [sheet showInView:self.view];
+        }
+            break;
         default:
             break;
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [[ReceiveAndSendPackage sharedInstance] removeDataSince:0];
+    }else if (buttonIndex == 1) {
+        [[ReceiveAndSendPackage sharedInstance] removeDataSince:7];
+    }else if(buttonIndex == 2) {
+        [[ReceiveAndSendPackage sharedInstance] removeDataSince:3];
+    }else if(buttonIndex == 3) {
+        
     }
 }
 
