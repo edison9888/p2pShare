@@ -23,8 +23,22 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+
+static void uncaughtExceptionHandler(NSException *exception) {
+    
+    NSLog(@"CRASH: %@", exception);
+    
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
+    
+    // Internal error reporting
+    
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 	[ReceiveAndSendPackage sharedInstance].managedObjectContext=[self managedObjectContext];
     [[CurrentUserManager sharedInstance] updateLocation];

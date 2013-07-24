@@ -31,7 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title=NSLocalizedString(@"Edit Name", nil);
-    self.view.backgroundColor=[UIColor grayColor];
+    self.view.backgroundColor=[UIColor lightGrayColor];
     UIBarButtonItem *doneButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(Done)];
     self.navigationItem.rightBarButtonItem=doneButton;
     
@@ -39,7 +39,7 @@
     CGRect rect=[UIScreen mainScreen].bounds;
     nameField=[[UITextField alloc]initWithFrame:CGRectMake(20, 20, rect.size.width-40, 60)];
     nameField.delegate=self;
-    nameField.borderStyle=UITextBorderStyleLine;
+    nameField.borderStyle=UITextBorderStyleRoundedRect;
     nameField.clearButtonMode=UITextFieldViewModeUnlessEditing;
     if ([CurrentUserManager sharedInstance].nickName) {
         nameField.text=[CurrentUserManager sharedInstance].nickName;

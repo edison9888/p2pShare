@@ -39,13 +39,21 @@ static LocalShareManager *_sharedManagerInstance=nil;
     _tmpServices=[[NSMutableArray alloc]init];
     _trackQueue =[[ASINetworkQueue alloc]init];
     [_trackQueue reset];
-    [_trackQueue setMaxConcurrentOperationCount:5];
+    [_trackQueue setMaxConcurrentOperationCount:1];
     return self;
 }
 
 -(void)browseLocalLanServices
 {
     [[self domainBrowser] searchForServicesOfType:@"_p2pShare._tcp" inDomain:@""];
+    [self performSelector:@selector(stopBrowsingLocalServices) withObject:nil afterDelay:10.0];
+}
+
+-(void)stopBrowsingLocalServices
+{
+    NSLog(@"stopBrowsingLocalServices");
+    [[self domainBrowser] stop];
+    [_tmpServices removeAllObjects];
 }
 
 -(void)startResolvingServices
@@ -98,6 +106,13 @@ static LocalShareManager *_sharedManagerInstance=nil;
 {
     _searching = NO;
     [self handleError:[errorDict objectForKey:NSNetServicesErrorCode]];
+    if ([_tmpServices count]>0) {
+        NSLog(@"netServiceBrowser didNotSearch while _tmpServices>0 , search again");
+        [_tmpServices removeAllObjects];
+        [self browseLocalLanServices];
+    }
+    
+    
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing
@@ -105,6 +120,7 @@ static LocalShareManager *_sharedManagerInstance=nil;
     NSLog(@"name:%@ port:%d type:%@",[netService name],[netService port],[netService type]);
     [_tmpServices addObject:netService];
     if (!moreServicesComing) {
+        [[self domainBrowser] stop];
         [self startResolvingServices];
     }
 }
@@ -139,7 +155,10 @@ static LocalShareManager *_sharedManagerInstance=nil;
 // resolve nsnetservice
 - (void)netServiceDidResolveAddress:(NSNetService *)netService
 {
-    for (NSData *addressData in [netService addresses]) {
+    NSLog(@"netServiceDidResolveAddress");
+    NSArray *addresses=[netService addresses];
+    for (NSData *addressData in addresses) {
+        NSLog(@"for in 1");
         NSString *address = [self getStringFromAddressData:addressData];
         NSLog(@"checking IP is : %@",address);
         if ([address hasPrefix:@"127"] || [address hasPrefix:@"0."]) {
@@ -154,9 +173,22 @@ static LocalShareManager *_sharedManagerInstance=nil;
         //add task to share information with this IP
         [self exchangeWithHost:address port:[netService port]];
     }
+//    for (int i=0; i<[_tmpServices count]; i++) {
+//        NSLog(@"for in 3");
+//        NSNetService *tmp=[_tmpServices objectAtIndex:i];
+//        if (tmp==netService) {
+//            [_tmpServices removeObjectAtIndex:i];
+//            NSLog(@"delete object tmp");
+//        }
+//    }
+
+    
     for (NSNetService *tmp in _tmpServices) {
+        NSLog(@"for in 2");
         if (tmp==netService) {
             [_tmpServices removeObject:tmp];
+            NSLog(@"delete object tmp");
+            break;
         }
     }
 }

@@ -224,7 +224,7 @@
             break;
         case 2:
         {
-            UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Delete N days away", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"All", nil) otherButtonTitles:NSLocalizedString(@"7 days", nil),NSLocalizedString(@"3 days", nil), nil];
+            UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Delete N days before", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"All", nil) otherButtonTitles:NSLocalizedString(@"7 days", nil),NSLocalizedString(@"3 days", nil), nil];
             sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
             [sheet showInView:self.view];
         }

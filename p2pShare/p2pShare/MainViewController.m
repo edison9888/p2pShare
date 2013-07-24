@@ -116,6 +116,7 @@
     self.navigationItem.leftBarButtonItem=settingButton;
     self.navigationItem.rightBarButtonItem=addButton;
     self.title=NSLocalizedString(@"Home", nil);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"MainViewReload" object:nil];
 }
 
 -(void)setting

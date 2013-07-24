@@ -54,6 +54,7 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
                 abort();
             }
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MainViewReload" object:nil];
     }
 }
 
@@ -137,6 +138,7 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     NSArray *array = [moc executeFetchRequest:request error:&error];
     for (NSManagedObject *tmp in array) {
         [tmp.managedObjectContext deleteObject:tmp];
+        [tmp.managedObjectContext save:nil];
     }
     
 }
