@@ -8,7 +8,9 @@
 
 #import "AddRecordViewController.h"
 #import "OpenUDID.h"
+#import "ContentFormat.h"
 #import <QuartzCore/QuartzCore.h>
+
 
 @interface AddRecordViewController ()
 
@@ -81,7 +83,7 @@
         return;
     }
     if (item) {
-        item.content=contentField.text;
+        item.content=[ContentFormat newThreadWithContent:contentField.text];
         NSDate *now=[NSDate date];
         NSTimeInterval number=[now timeIntervalSince1970];
         int intNumber=(int)number;

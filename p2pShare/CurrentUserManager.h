@@ -11,12 +11,20 @@
 
 @interface CurrentUserManager : NSObject <CLLocationManagerDelegate>
 
-@property (nonatomic,strong) CLLocation         *bestEffortAtLocation;
+//@property (nonatomic,strong) CLLocation         *bestEffortAtLocation;
 @property (nonatomic,strong) CLLocationManager *locationManager;
 @property (nonatomic,strong) NSString           *openUDID;
 @property (nonatomic,strong) NSString           *nickName;
+@property (nonatomic,strong) NSString           *city;
+@property (nonatomic,strong) NSString           *address;
+@property (nonatomic,strong) NSString           *area;
 
 +(CurrentUserManager *)sharedInstance;
 -(void)updateLocation;
+
+- (double)getUserLatitude;
+- (double)getUserLongitude;
+
+-(NSString *)getLocationCombineString;
 
 @end

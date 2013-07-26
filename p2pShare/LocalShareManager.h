@@ -22,7 +22,7 @@
     BOOL _searching;
 }
 @property (nonatomic,strong) NSNetServiceBrowser     *domainBrowser;
-
+@property (nonatomic,assign) NSInteger               serviceCount;
 
 -(void)browseLocalLanServices;
 -(void)exchangeWithHost:(NSString *)address port:(UInt16)port;

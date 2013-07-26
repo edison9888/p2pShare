@@ -10,6 +10,7 @@
 #import "ChangeNameViewController.h"
 #import "WebViewController.h"
 #import "ReceiveAndSendPackage.h"
+#import "CurrentUserManager.h"
 
 @interface SettingViewController ()
 
@@ -109,7 +110,7 @@
         case 0:
         {
             cell.textLabel.text=NSLocalizedString(@"Name", nil);
-            cell.detailTextLabel.text=NSLocalizedString(@"Clear records", nil);
+            cell.detailTextLabel.text=[CurrentUserManager sharedInstance].nickName;
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         }
             break;
@@ -226,7 +227,7 @@
         {
             UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Delete N days before", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:NSLocalizedString(@"All", nil) otherButtonTitles:NSLocalizedString(@"7 days", nil),NSLocalizedString(@"3 days", nil), nil];
             sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-            [sheet showInView:self.view];
+            [sheet showFromTabBar:self.navigationController.tabBarController.tabBar];
         }
             break;
         default:

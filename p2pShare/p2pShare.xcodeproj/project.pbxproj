@@ -42,6 +42,7 @@
 		168DE0E617968EFA00533C55 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0DC17968EFA00533C55 /* AFXMLRequestOperation.m */; };
 		168DE0E717968EFA00533C55 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0DE17968EFA00533C55 /* UIImageView+AFNetworking.m */; };
 		168DE0EA179690C500533C55 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 168DE0E9179690C500533C55 /* AFAppDotNetAPIClient.m */; };
+		16C0704117A2C2EF007CA3C2 /* ContentFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C0704017A2C2EF007CA3C2 /* ContentFormat.m */; };
 		16C2C67C178F8EFF00D3A4D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C67B178F8EFF00D3A4D6 /* UIKit.framework */; };
 		16C2C67E178F8EFF00D3A4D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C67D178F8EFF00D3A4D6 /* Foundation.framework */; };
 		16C2C680178F8EFF00D3A4D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2C67F178F8EFF00D3A4D6 /* CoreGraphics.framework */; };
@@ -168,6 +169,8 @@
 		168DE0DE17968EFA00533C55 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		168DE0E8179690C500533C55 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
 		168DE0E9179690C500533C55 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
+		16C0703F17A2C2EF007CA3C2 /* ContentFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentFormat.h; sourceTree = "<group>"; };
+		16C0704017A2C2EF007CA3C2 /* ContentFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentFormat.m; sourceTree = "<group>"; };
 		16C2C678178F8EFF00D3A4D6 /* p2pShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p2pShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C2C67B178F8EFF00D3A4D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		16C2C67D178F8EFF00D3A4D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -369,6 +372,8 @@
 				168DE0C5179646A300533C55 /* ReceiveAndSendPackage.m */,
 				16354216179E2C4800D7CBA4 /* CurrentUserManager.h */,
 				16354217179E2C4800D7CBA4 /* CurrentUserManager.m */,
+				16C0703F17A2C2EF007CA3C2 /* ContentFormat.h */,
+				16C0704017A2C2EF007CA3C2 /* ContentFormat.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -828,6 +833,7 @@
 				16354223179E82F500D7CBA4 /* ChangeNameViewController.m in Sources */,
 				165B23B6179EADD900086279 /* WebViewController.m in Sources */,
 				160F737917A2419200E02DBA /* Topic.m in Sources */,
+				16C0704117A2C2EF007CA3C2 /* ContentFormat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,11 @@
 static CurrentUserManager *_sharedManagerInstance=nil;
 
 @implementation CurrentUserManager
-@synthesize locationManager,bestEffortAtLocation,openUDID,nickName;
+@synthesize locationManager,openUDID;
+@synthesize nickName=_nickName;
+@synthesize city=_city;
+@synthesize area=_area;
+@synthesize address=_address;
 
 
 +(CurrentUserManager *)sharedInstance
@@ -34,7 +38,10 @@ static CurrentUserManager *_sharedManagerInstance=nil;
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     openUDID=[OpenUDID value];
     NSUserDefaults *defaultValue=[NSUserDefaults standardUserDefaults];
-    nickName=[defaultValue objectForKey:@"nickName"];
+    _nickName=[defaultValue objectForKey:@"nickName"];
+    if (_nickName==nil) {
+        _nickName=NSLocalizedString(@"Super big", nil);
+    }
     return self;
 }
 
@@ -46,34 +53,45 @@ static CurrentUserManager *_sharedManagerInstance=nil;
     [self performSelector:@selector(stopUpdatingLocation) withObject:nil afterDelay:20.0];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    // test the age of the location measurement to determine if the measurement is cached
-    // in most cases you will not want to rely on cached measurements
-    NSLog(@"Location update with longtitude:%f latitude%f",newLocation.coordinate.longitude,newLocation.coordinate.latitude);
-    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
-    if (locationAge > 5.0) return;
-    // test that the horizontal accuracy does not indicate an invalid measurement
-    if (newLocation.horizontalAccuracy < 0) return;
-    // test the measurement to see if it is more accurate than the previous measurement
-    if (bestEffortAtLocation == nil || bestEffortAtLocation.horizontalAccuracy > newLocation.horizontalAccuracy) {
-        // store the location as the "best effort"
-        self.bestEffortAtLocation = newLocation;
-        // test the measurement to see if it meets the desired accuracy
-        //
-        // IMPORTANT!!! kCLLocationAccuracyBest should not be used for comparison with location coordinate or altitidue
-        // accuracy because it is a negative value. Instead, compare against some predetermined "real" measure of
-        // acceptable accuracy, or depend on the timeout to stop updating. This sample depends on the timeout.
-        //
-        if (newLocation.horizontalAccuracy <= locationManager.desiredAccuracy) {
-            // we have a measurement that meets our requirements, so we can stop updating the location
-            //
-            // IMPORTANT!!! Minimize power usage by stopping the location manager as soon as possible.
-            //
-            [self stopUpdatingLocation];
-            // we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
-            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation) object:nil];
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog( @"didUpdateLocation!");
+    NSLog( @"latitude is %lf and longitude is %lf", [self getUserLatitude], [self getUserLongitude]);
+    
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        for (CLPlacemark * placemark in placemarks) {
+            _address = [placemark name];
+            _city = [placemark locality]; // locality means "city"
+            _area = [placemark administrativeArea]; // which is "state" in the U.S.A.
+            
+            NSLog( @"name is %@ and locality is %@ and administrative area is %@", _address, _city, _area );
         }
+    }];
+}
+
+-(NSString *)getLocationCombineString
+{
+    if (_area) {
+        return [NSString stringWithFormat:@"%@,%@,%@",_area,_city,_address];
     }
+    else
+        return NSLocalizedString(@"Test Location", nil);    
+}
+
+- (double)getUserLatitude
+{
+    return locationManager.location.coordinate.latitude;
+}
+
+- (double)getUserLongitude
+{
+    return locationManager.location.coordinate.longitude;
+}
+
+-(CLLocationManager*) getLocationManager
+{
+    return locationManager;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -85,7 +103,7 @@ static CurrentUserManager *_sharedManagerInstance=nil;
 
 -(void)setNickName:(NSString *)nickName
 {
-    self.nickName=nickName;
+    _nickName=nickName;
     NSUserDefaults *defaultValue=[NSUserDefaults standardUserDefaults];
     [defaultValue setObject:self.nickName forKey:@"nickName"];
     [defaultValue synchronize];

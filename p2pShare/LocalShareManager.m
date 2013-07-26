@@ -22,6 +22,7 @@ static LocalShareManager *_sharedManagerInstance=nil;
 @implementation LocalShareManager
 
 @synthesize domainBrowser=_domainBrowser;
+@synthesize serviceCount=_serviceCount;
 
 +(LocalShareManager *)sharedInstance
 {
@@ -120,6 +121,8 @@ static LocalShareManager *_sharedManagerInstance=nil;
     NSLog(@"name:%@ port:%d type:%@",[netService name],[netService port],[netService type]);
     [_tmpServices addObject:netService];
     if (!moreServicesComing) {
+        _serviceCount=[_tmpServices count];
+        NSLog(@"found service count :%d",_serviceCount);
         [[self domainBrowser] stop];
         [self startResolvingServices];
     }
