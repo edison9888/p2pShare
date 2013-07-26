@@ -41,7 +41,9 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
                 continue;
             }
             Topic *record=[NSEntityDescription insertNewObjectForEntityForName:@"Topic" inManagedObjectContext:self.managedObjectContext];
-            record.lastUpdateTime=[self dateFromString:[tmpDic objectForKey:@"lastUpdateTime"]];
+            NSDate *lastUpdateTime=[self dateFromString:[tmpDic objectForKey:@"lastUpdateTime"]];
+            record.lastUpdateTime=[NSNumber numberWithInt:(int)[lastUpdateTime timeIntervalSince1970]];
+            
             record.openUDID=[tmpDic objectForKey:@"openUDID"];
             record.content=[tmpDic objectForKey:@"content"];
             if (![record.managedObjectContext save:&error]) {
@@ -68,10 +70,11 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     
     // Set example predicate and sort orderings...
     NSDate *lastUpdateTime=[self dateFromString:[dic objectForKey:@"lastUpdateTime"]];
+    NSTimeInterval lastUpdateTimeInterval=[lastUpdateTime timeIntervalSince1970];
     NSString *openUDID=[dic objectForKey:@"openUDID"];
     NSString *content=[dic objectForKey:@"content"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"(openUDID==%@  AND lastUpdateTime == %@ AND  content==%@)", openUDID,lastUpdateTime,content];
+                              @"(openUDID==%@  AND lastUpdateTime == %d AND  content==%@)", openUDID,(int)lastUpdateTimeInterval,content];
     
     [request setPredicate:predicate];
     
@@ -105,7 +108,11 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     for (Topic *item in tmpArray) {
         NSMutableDictionary *tmpDic=[[NSMutableDictionary alloc]init];
         [tmpDic setObject:item.openUDID forKey:@"openUDID"];
-        [tmpDic setObject:[self stringFromDate:item.lastUpdateTime] forKey:@"lastUpdateTime"];
+        NSNumber *itmesLastUpdate=item.lastUpdateTime;
+        int intLastUpdate=itmesLastUpdate.intValue;
+        
+        NSDate *lastUpdateTime=[NSDate dateWithTimeIntervalSince1970:intLastUpdate];
+        [tmpDic setObject:[self stringFromDate:lastUpdateTime] forKey:@"lastUpdateTime"];
         [tmpDic setObject:item.content forKey:@"content"];
         [arrayOfDicts addObject:tmpDic];
     }
@@ -122,6 +129,8 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
 {
     NSDate *nowDate=[NSDate date];
     NSDate *beforeDaysDate=[nowDate dateBySubtractingDays:days];
+    NSTimeInterval beforeDaysDateTimeInterval=[beforeDaysDate timeIntervalSince1970];
+    
     
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription
@@ -130,7 +139,7 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
     [request setEntity:entityDescription];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"(lastUpdateTime < %@ )", beforeDaysDate];
+                              @"(lastUpdateTime < %lf )", beforeDaysDateTimeInterval];
     
     [request setPredicate:predicate];
     
@@ -185,7 +194,7 @@ static ReceiveAndSendPackage *_sharedManagerInstance=nil;
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.
-        NSSortDescriptor *sortDescriptorUpdate = [[NSSortDescriptor alloc] initWithKey:@"lastUpdateTime" ascending:YES];
+        NSSortDescriptor *sortDescriptorUpdate = [[NSSortDescriptor alloc] initWithKey:@"lastUpdateTime" ascending:NO];
         //        NSSortDescriptor *sortDescriptorDate = [[NSSortDescriptor alloc] initWithKey:@"endDate" ascending:NO];
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptorUpdate, nil];//,sortDescriptorDate, nil];
         

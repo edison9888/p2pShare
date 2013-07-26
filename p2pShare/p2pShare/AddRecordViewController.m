@@ -82,7 +82,10 @@
     }
     if (item) {
         item.content=contentField.text;
-        item.lastUpdateTime=[NSDate date];
+        NSDate *now=[NSDate date];
+        NSTimeInterval number=[now timeIntervalSince1970];
+        int intNumber=(int)number;
+        item.lastUpdateTime=[NSNumber numberWithInt:intNumber];
         item.openUDID=[OpenUDID value];
         NSError *error = nil;
         if (![item.managedObjectContext save:&error]) {
