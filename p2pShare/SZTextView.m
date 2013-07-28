@@ -118,6 +118,13 @@ static float kUITextViewPadding = 8.0;
     }
 }
 
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    if (action == @selector(paste:))
+        return NO;
+    return [super canPerformAction:action withSender:sender];
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

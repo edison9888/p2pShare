@@ -334,15 +334,23 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		166879F517A3A8AF00CC53C9 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				167C401E179D93C600D76F2C /* SZTextView.h */,
+				167C401F179D93C600D76F2C /* SZTextView.m */,
+			);
+			name = TextView;
+			sourceTree = "<group>";
+		};
 		167C4015179D7EE700D76F2C /* FirstTab */ = {
 			isa = PBXGroup;
 			children = (
+				166879F517A3A8AF00CC53C9 /* TextView */,
 				16406066179A6D66009F53EA /* MainViewController.h */,
 				16406067179A6D66009F53EA /* MainViewController.m */,
 				1640606F179A8D80009F53EA /* AddRecordViewController.h */,
 				16406070179A8D80009F53EA /* AddRecordViewController.m */,
-				167C401E179D93C600D76F2C /* SZTextView.h */,
-				167C401F179D93C600D76F2C /* SZTextView.m */,
 				167C4017179D7F6500D76F2C /* NetworkViewController.h */,
 				167C4018179D7F6500D76F2C /* NetworkViewController.m */,
 			);

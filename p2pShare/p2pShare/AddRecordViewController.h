@@ -10,11 +10,12 @@
 #import "Topic.h"
 #import "SZTextView.h"
 
-@interface AddRecordViewController : UIViewController<UITextViewDelegate>
+@interface AddRecordViewController : UIViewController<UITextViewDelegate,UIScrollViewDelegate>
 
 
-
-@property(nonatomic,strong)     SZTextView *contentField;
+@property(nonatomic,strong)     UILabel *titleLabel;
+@property(nonatomic,strong)     UIScrollView *scollView;
+@property(nonatomic,strong)     SZTextView *textView;
 @property(nonatomic, strong)     Topic *item;
 
 
